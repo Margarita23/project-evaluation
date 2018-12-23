@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Имя:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @project.user %>
+</p>
+
+<%= link_to 'Изменить', edit_project_path(@project) %> |
+<%= link_to 'Назад', projects_path, class: "btn btn-secondary" %>

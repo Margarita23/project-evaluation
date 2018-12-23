@@ -1,0 +1,140 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+@import "bootstrap";
+
+/*
+ *= require_tree . 
+ */
+
+
+#container {
+  position: static;
+  width: 100%;
+  height: 80px;
+  background-color: #CDE3F4;
+}
+
+#container a {
+  color: #00192B;
+}
+
+.nav {
+  float: right;
+  width: 240px;
+  padding: 0px;
+}
+
+#footer {
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  color: #CDE3F4;
+  background-color: #2B3B48;
+}
+
+.body-for-button {
+  width: 100%;
+  text-align: center;
+  marging: 0px;
+}
+
+.btn-light:first-child {
+  font-size: 60px;
+  color: #432700;
+  background-color:#FCC883;
+}
+
+.btn-light {
+  background-color: #FFEBCF;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border: none;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #705B3F;
+  margin: 20px;
+}
+
+.btn-light:hover {
+  background-color: #FCEAD1;
+}
+
+.btn-primary{
+  background-color: #01AC67;
+  border: 1px solid #2B5F4A;
+}
+
+.btn-primary:hover {
+  background-color: #01AC67;
+  border: 1px solid #2B5F4A;
+}
+
+.btn-secondary {
+  margin-top: 10px;
+}
+
+.btn-danger {
+  background-color: #FD4C01;
+  border: 1px solid #5E1C00;
+}
+
+form#new_user.new_user, .edit_user, .project-form{
+  width: 30%;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+//***********************************
+// Error message
+.field_with_errors {
+  padding: 2px;
+  background-color: #FF9D74;
+  display: table;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid #8B563F;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #FFDECF;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #5E1C00;
+    color: #FFDECF;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+//***********************************
+
+
