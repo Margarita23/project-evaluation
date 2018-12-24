@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: phonecasemaggie
+  api_key: '733654539861977'
+  api_secret: dWy6pn2zfejJebdw32lqCzBH5KE
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: phonecasemaggie
+  api_key: '733654539861977'
+  api_secret: dWy6pn2zfejJebdw32lqCzBH5KE
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: phonecasemaggie
+  api_key: '733654539861977'
+  api_secret: dWy6pn2zfejJebdw32lqCzBH5KE
+  enhance_image_tag: true
+  static_file_support: false

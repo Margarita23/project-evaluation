@@ -12,16 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "name", placeholder: "Project Name" %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
 
   <div class="actions">
-    <%= form.submit "Создать проект", class: "btn btn-primary" %>
+    <%= form.submit "Создать проект", class: "btn btn-primary new-proj" %>
   </div>
 <% end %>

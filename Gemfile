@@ -41,6 +41,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'
 gem 'bootsnap', require: false
+gem 'cloudinary', '~> 1.11', '>= 1.11.1'
 
 
 group :development, :test do

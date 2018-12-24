@@ -99,7 +99,11 @@ form#new_user.new_user, .edit_user, .project-form{
   left: 0;
   right: 0;
   margin: auto;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+}
+
+.back {
+  color: #2B3B48;
 }
 
 //***********************************
@@ -136,5 +140,121 @@ form#new_user.new_user, .edit_user, .project-form{
 }
 
 //***********************************
+//style for new project
+
+#project_name.name {
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-bottom: 2px solid #00192B;
+  width: 30%;
+  color: #00192B;
+}
+
+#project_name.name[placeholder] {
+  text-align: center;
+}
+
+.new-proj {
+  position: absolute;
+  height: 38px;
+  width: 146px;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-bottom: 100px;
+} 
+
+//***********************************
+//style for all projects
+
+h1 {
+  color: #00192B;
+  text-align: center;
+}
+
+.all-projects {
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  color: #00192B;
+  width: 80%;
+}
+
+.all-projects td {
+  padding: 10px;
+  border-bottom: 1px solid #CDE3F4;
+}
+
+.all-projects tbody {
+  display:inline-block;
+  width: 100%;
+}
+
+.all-projects td:first-child {
+  width: 100%;
+}
+
+.all-projects a{
+  color: #00192B;
+}
+
+.all-projects tr:hover{
+  background-color: rgba(205, 227, 244, 0.2);
+  -webkit-transition: 1s ease-out;
+  -o-transition: 1s ease-out;
+  -moz-transition: 1s ease-out;
+  transition: 1s ease-out;
+}
+
+.compare-projs {
+  display: flex; 
+  justify-content: center;
+  width: 146px;
+  margin: 0px auto 80px;
+}
+
+//***********************************
+//style for checkbox
+
+.accept-check > input#accept {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: #2B5F4A;
+     height: 30px;
+     width: 30px;
+     border: 0;
+     border-radius: 50px;
+     cursor: pointer;   
+     outline: none;
+}
+
+.accept-check > input#accept:checked::before
+{
+    position: absolute;
+    font: 18px 'Open Sans', sans-serif;
+    font-weight: bold;
+    left: 9px;
+    top: 3px;
+    content: '\02143';
+    transform: rotate(40deg);
+}
+.accept-check > input#accept:hover
+{
+     background-color: #70F7C1;
+}
+.accept-check > input#accept:checked
+{
+     background-color: #70F7C1;
+}
 
 
+//***********************************
+//***********************************
