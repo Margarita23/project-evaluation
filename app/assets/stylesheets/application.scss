@@ -27,14 +27,19 @@
   background-color: #CDE3F4;
 }
 
+#container #logo {
+  display: inline-block;
+}
+
 #container a {
   color: #00192B;
 }
 
-.nav {
+#container .nav.justify-content-end {
   float: right;
-  width: 240px;
-  padding: 0px;
+  width: 300px;
+  padding: 20px;
+  color: #00192B;
 }
 
 #footer {
@@ -216,6 +221,59 @@ h1 {
   width: 146px;
   margin: 0px auto 80px;
 }
+
+
+//***********************************
+//style for all aspects
+
+.bocr {
+  border: 1px solid #cfd7e3;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, .5);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  margin-top: 40px;
+  color: #00192B;
+  width: 80%;
+  padding: 20px;
+  
+}
+
+.opportunity-style {
+  border-left: 20px solid #FFE580;
+  list-style: none;
+}
+
+.opportunity-style li {
+  width: 100%;
+}
+
+.opportunity-style li form {
+  width: 90%;
+  position: relative;
+}
+.opportunity-style li form input {
+  width: 100%;
+}
+
+.opportunity-style li > * {
+  display: inline-block;
+  padding: 10px;
+}
+
+.opportunity-style li a {
+  display: inline-block;
+}
+
+.opportunity-style input#opportunity_name {
+  border: none;
+}
+
+.opportunity-style input#opportunity_name::placeholder {
+  color: #00192B;
+  font-size: 20px;
+}
+
 
 //***********************************
 //style for checkbox

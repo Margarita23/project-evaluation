@@ -1,0 +1,5 @@
+<%= form_for :opportunity, url: project_opportunity_path(project_id: @project.id, id: opport.id), method: :put do |f| %>
+
+  <%= f.text_field :name, placeholder: opport.name %>
+
+<% end %>

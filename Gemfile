@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 
 gem 'devise'
-gem 'cancan'
+gem 'cancancan', '~> 2.0'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'
