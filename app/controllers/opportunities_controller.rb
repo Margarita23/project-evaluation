@@ -37,7 +37,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
   private
   
   def create_params
-    params.permit(:name)
+    params.permit(:name) || "NEW OPP"
   end
 
   def update_params
