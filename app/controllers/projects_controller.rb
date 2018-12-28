@@ -7,16 +7,6 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def show
-  end
-
-  def new
-    @project = Project.new
-  end
-
-  def edit
-  end
-
   def create
     @project = Project.new(project_params)
 

@@ -6,7 +6,7 @@ class OpportunitiesController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def create
-    @opportunity = @project.opportunities.build(create_params)
+    @opportunity = @project.opportunities.new(name: "Новая возможность")
     if @opportunity.save
       flash[:notice] = "Новая возможность успешно создана"
     else
@@ -35,10 +35,6 @@ rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
   end
 
   private
-  
-  def create_params
-    params.permit(:name) || "NEW OPP"
-  end
 
   def update_params
     params.require(:opportunity).permit(:name)
