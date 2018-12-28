@@ -5,12 +5,16 @@
 <div class="bocr">
   
 <ul class="opportunity-style">
+  <p>Возможности:</p>
   <% @project.opportunities.each do |opp| %>
   <li>
     <%= render "opportunity/opportunity", opport: opp %>
     <%= link_to cl_image_tag("CompareProjects/crash.png", :width=>30, :crop=>"scale"), project_opportunity_path(project_id: @project, id: opp.id), method: :delete %>
   </li>
   <% end %>
+  <li>
+    <%= link_to cl_image_tag("CompareProjects/add_circle.png", width: 40, crop: "scale"), project_opportunities_path(@project), method: :post %>
+  </li>
 </ul>
 
 </div>

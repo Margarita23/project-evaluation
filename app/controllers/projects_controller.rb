@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
-  #before_action :set_project, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
     @projects = Project.all
@@ -48,6 +49,10 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def handle_record_not_found
+    render :not_found_project
   end
 
   private
