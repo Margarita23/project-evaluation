@@ -1,0 +1,5 @@
+<%= form_for :benefit, url: project_benefit_path(project_id: @project.id, id: benefit.id), method: :put do |f| %>
+
+  <%= f.text_field :name, placeholder: benefit.name %>
+
+<% end %>

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   
   resources :projects do
     resources :opportunities
+    resources :benefits
+    resources :costs
+    resources :risks
   end
     
 end

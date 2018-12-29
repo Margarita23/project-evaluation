@@ -2,8 +2,8 @@
 <%= link_to ' < Назад', projects_path, class: "btn btn-secondary" %>
 
 <h1><%= @project.name %></h1>
+
 <div class="bocr">
-  
 <ul class="opportunity-style">
   <p>Возможности:</p>
   <% @project.opportunities.each do |opp| %>
@@ -13,8 +13,52 @@
   </li>
   <% end %>
   <li>
-    <%= link_to cl_image_tag("CompareProjects/add_circle.png", width: 40, crop: "scale"), project_opportunities_path(@project), method: :post %>
+    <%= link_to cl_image_tag("CompareProjects/add_butt.png", :width=>40, :crop=>"scale"), project_opportunities_path(@project), method: :post %>
   </li>
 </ul>
+</div>
 
+<div class="bocr">
+<ul class="benefit-style">
+  <p>Выгоды:</p>
+  <% @project.benefits.each do |benefit| %>
+  <li>
+    <%= render "benefit/benefit", benefit: benefit %>
+    <%= link_to cl_image_tag("CompareProjects/crash.png", :width=>30, :crop=>"scale"), project_benefit_path(project_id: @project, id: benefit.id), method: :delete %>
+  </li>
+  <% end %>
+  <li>
+    <%= link_to cl_image_tag("CompareProjects/add_butt_benefit.png", :width=>40, :crop=>"scale"), project_benefits_path(@project), method: :post %>
+  </li>
+</ul>
+</div>
+
+<div class="bocr">
+<ul class="cost-style">
+  <p>Издержки:</p>
+  <% @project.costs.each do |cost| %>
+  <li>
+    <%= render "cost/cost", cost: cost %>
+    <%= link_to cl_image_tag("CompareProjects/crash.png", :width=>30, :crop=>"scale"), project_cost_path(project_id: @project, id: cost.id), method: :delete %>
+  </li>
+  <% end %>
+  <li>
+    <%= link_to cl_image_tag("CompareProjects/add_butt_cost.png", :width=>40, :crop=>"scale"), project_costs_path(@project), method: :post %>
+  </li>
+</ul>
+</div>
+
+<div class="bocr">
+<ul class="risk-style">
+  <p>Риски:</p>
+  <% @project.risks.each do |risk| %>
+  <li>
+    <%= render "risk/risk", risk: risk %>
+    <%= link_to cl_image_tag("CompareProjects/crash.png", :width=>30, :crop=>"scale"), project_risk_path(project_id: @project, id: risk.id), method: :delete %>
+  </li>
+  <% end %>
+  <li>
+    <%= link_to cl_image_tag("CompareProjects/add_butt_risk.png", :width=>40, :crop=>"scale"), project_risks_path(@project), method: :post %>
+  </li>
+</ul>
 </div>

@@ -12,6 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
+
+//= require jquery
+//= require jquery_ujs
 //= require turbolinks
 
 
@@ -20,3 +23,18 @@
 //= require bootstrap
 //= require_tree .
 
+$( document ).ready(function() {
+  getInputForUpdateProjectsName();
+});
+
+function getInputForUpdateProjectsName(){
+  $('.edit-project-name-button').click(function() {
+    var index = $('.edit-project-name-button').index(this);
+    getOneInputUpdate(index);
+  });
+};
+
+function getOneInputUpdate(index) {
+  $('.link-to-project-show').eq( index ).hide();
+  $('.project-edit-name').eq( index ).css('display', 'inline-block');
+};

@@ -1,18 +1,31 @@
-<h1>Мои проекты</h1>
+<h1>Мои проекты <%= link_to cl_image_tag("CompareProjects/add_project_butt.png", :width=>40, :crop=>"scale"), projects_path, method: :post %></h1>
 
 <table class="all-projects">
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= link_to project.name, project %></td>
-        <td class="accept-check"><%= check_box_tag 'accept'%></td>
-        <td><%= link_to cl_image_tag("CompareProjects/Pen-4-icon-2.png", :width=>30, :crop=>"scale"), edit_project_path(project) %></td>
-        <td><%= link_to cl_image_tag("CompareProjects/crash.png", :width=>30, :crop=>"scale"), project, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td class="project-name-field">
+          <div class="link-to-project-show">
+            <%= link_to project.name, project %>
+          </div>
+          <div class="project-edit-name">
+            <%= render "form", project: project %>
+          </div>
+          
+        </td>
+        <td class="accept-check">
+          <%= check_box_tag 'accept'%>
+        </td>
+        <td class="edit-project-name-button">
+          <%= cl_image_tag("CompareProjects/Pen-4-icon-2.png", :width=>30, :crop=>"scale") %>
+        </td>
+        <td>
+          <%= link_to cl_image_tag("CompareProjects/crash.png", :width=>30, :crop=>"scale"), project, method: :delete, data: { confirm: 'Вы уверены?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'Сравнить проекты', root_path, class: "btn btn-primary compare-projs" %>

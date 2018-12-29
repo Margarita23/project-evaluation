@@ -3,13 +3,13 @@ class Ability
 
   def initialize(user)
     
-    user ||= User.new # guest user (not logged in)
+    user ||= User.new
       if user.admin?
         can :manage, :all
       elsif !user.new_record?
         can :read, :all
         can :manage, Project
-        can :manage, Opportunity
+        can :manage, [Opportunity, Benefit, Cost, Risk]
       else
         cannot :read, :all
       end

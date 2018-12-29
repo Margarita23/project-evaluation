@@ -1,0 +1,5 @@
+<%= form_for :cost, url: project_cost_path(project_id: @project.id, id: cost.id), method: :put do |f| %>
+
+  <%= f.text_field :name, placeholder: cost.name %>
+
+<% end %>
