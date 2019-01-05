@@ -36,9 +36,13 @@
 
 #container .nav.justify-content-end {
   float: right;
-  width: 300px;
+  width: 500px;
   padding: 20px;
   color: #00192B;
+}
+
+#container li.nav-item.compare > a {
+  color: red;
 }
 
 #footer {
@@ -182,7 +186,7 @@ h1 {
   text-align: center;
 }
 
-.all-projects {
+table.all-projects {
   border: none;
   margin-left: auto;
   margin-right: auto;
@@ -190,25 +194,25 @@ h1 {
   width: 80%;
 }
 
-.all-projects td {
+table.all-projects td {
   padding: 10px;
   border-bottom: 1px solid #CDE3F4;
 }
 
-.all-projects tbody {
+table.all-projects tbody {
   display:inline-block;
   width: 100%;
 }
 
-.all-projects td:first-child {
+table.all-projects td:first-child {
   width: 100%;
 }
 
-.all-projects a{
+table.all-projects a{
   color: #00192B;
 }
 
-.all-projects tr:hover{
+table.all-projects tr:hover{
   font-size: 150%;
   -webkit-transition: 0.5s ease-out;
   -o-transition: 0.5s ease-out;
@@ -411,7 +415,7 @@ h1 {
 //***********************************
 //style for checkbox
 
-.accept-check > input#accept {
+.accept-check > input#project_ids_ {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -427,7 +431,7 @@ h1 {
   outline: none;
 }
 
-.accept-check > input#accept:checked::before
+.accept-check > input#project_ids_:checked::before
 {
   position: absolute;
   font: 18px 'Open Sans', sans-serif;
@@ -437,14 +441,36 @@ h1 {
   content: '\02143';
   transform: rotate(40deg);
 }
-.accept-check > input#accept:hover
+.accept-check > input#project_ids_:hover
 {
   background-color: #70F7C1;
 }
-.accept-check > input#accept:checked
+.accept-check > input#project_ids_:checked
 {
   background-color: #70F7C1;
 }
 
 //***********************************
 //***********************************
+//proj-range
+/*
+.proj-range {
+  width: 90%;
+  margin: 50px;
+}
+
+.proj-range > th, td {
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid #CDE3F4;;
+}
+
+.proj-range > tr:first-child, td:first-child {
+  background-color: #CDE3F4;
+}
+
+*/
+
+.current_step a {
+  color: red;
+}

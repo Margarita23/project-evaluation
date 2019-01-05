@@ -10,7 +10,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
     if @benefit.save
       flash[:notice] = "Новая выгода успешно создана"
     else
-      flash[:alert] = "Новая выгода не создана. Исправьте выгоду с именем 'Новая вогода'" 
+      flash[:alert] = "Новая выгода не создана. Исправьте выгоду с именем 'Новая выгода'" 
     end
     redirect_back(fallback_location: root_path)
   end

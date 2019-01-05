@@ -1,0 +1,2 @@
+module CompareProjectsHelper
+end

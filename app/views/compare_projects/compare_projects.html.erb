@@ -1,0 +1,40 @@
+<div class="link_to_steps">
+  <div><%= link_to "главный проект", compare_project_path(:assign_main), method: :get %></div> 
+  <div class="current_step"><%= link_to "оценивание", compare_project_path(:compare_projects), method: :get %></div>
+  <div><%= link_to "расчет приоритетов", compare_project_path(:set_criteria_priorities), method: :get %></div>
+  <div><%= link_to "результат", compare_project_path(:get_global_ratings), method: :get %></div>
+</div>
+
+<p>---</p>
+
+<%= form_for compare_projects_path(:set_criteria_priorities), class: "compare-proc" do |f| %>
+
+<%= f.hidden_field :current_step, value: session[:last_step] %>
+<table class="proj-range">
+  <tbody>
+    <th></th>
+    <% @compare_projects.minor_prj.each do |project| %>
+      <th> <%= project.name %> </th>
+    <% end %>
+    <% @compare_projects.aspects.each do |key, val| %>
+      <% val.each do |asp| %>
+      <tr class="<%= key.to_s %>">
+        <td><%= asp.name%></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= f.submit "Submit" %>
+<% end %>
+
+<p>---</p>
+
+<p><%= @compare_projects.aspects[:benefits] %></p>
+<p><%= @compare_projects.valid_aspects %></p>
+<p><%= @compare_projects.main_project_id %></p>
+<p><%= @compare_projects.minor_prj %></p>
+
+<p>---</p>

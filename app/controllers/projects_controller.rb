@@ -11,11 +11,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(name: "Новый проект", user_id: current_user.id)
     if @project.save
       flash[:notice] = "Новый проект успешно создан."
-      redirect_back(fallback_location: root_path)
     else
       flash[:alert] = "Проект не создан. Имя должно быть уникальным. Исправьте проект с именем 'Новый проект'"
-      redirect_back(fallback_location: root_path)
     end
+    redirect_to projects_path, method: :get
   end
 
   def update
@@ -49,6 +48,3 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(:name, :user_id)
     end
 end
-
-
-#format.json { render :show, status: :created, location: @project }
