@@ -5,7 +5,9 @@ class CompareProject#< ApplicationRecord
     :main_project_id,
     :user_id,
     :current_step,
-    :pr_range
+    :bocr_values,
+    :aspects_priorities,
+    :project_values
     )
   
   validates_presence_of :main_project_id, message: "Выберие главный проект!", if: :assign_project
@@ -22,12 +24,15 @@ class CompareProject#< ApplicationRecord
     projects.select{ |el| el.id.to_i != main_project_id.to_i }
   end
   
+  def main_prj
+    current_user.projects.find(main_project_id.to_i)
+  end
+  
   def aspects
     benefits = current_user.projects.find(main_project_id.to_i).benefits
     opportunities = current_user.projects.find(main_project_id.to_i).opportunities
     costs = current_user.projects.find(main_project_id.to_i).costs
     risks = current_user.projects.find(main_project_id.to_i).risks
-    #aspects = aspects.push(benefits, opportunities, costs, risks)
     Hash[benefits: benefits, opportunities: opportunities, costs: costs, risks: risks]
   end
   

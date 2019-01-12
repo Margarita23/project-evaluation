@@ -2,7 +2,6 @@
 
 <%= form_for CompareProject.new, url: compare_project_path(:assign_main), method: :get do |f| %>
 
-<%= f.hidden_field :current_step, value: session[:last_step] %>
 <%= f.hidden_field :user_id, value: current_user.id %>
 
 <table class="all-projects">

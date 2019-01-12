@@ -453,24 +453,40 @@ table.all-projects tr:hover{
 //***********************************
 //***********************************
 //proj-range
-/*
+
 .proj-range {
   width: 90%;
   margin: 50px;
 }
 
-.proj-range > th, td {
+.proj-range.th, .proj-range.td {
   padding: 30px 20px;
   text-align: center;
   border: 1px solid #CDE3F4;;
 }
 
-.proj-range > tr:first-child, td:first-child {
+.proj-range.tr:first-child, .proj-range.td:first-child {
   background-color: #CDE3F4;
 }
 
-*/
+//---------------------------
 
-.current_step a {
+.current_step{
   color: red;
+}
+
+.my-table {
+  width: 85%;
+  height: 100%;
+  text-align: center;
+  margin: 50px 100px;
+}
+
+.my-table > * > tr > td:first-child {
+  background-color: aqua;
+  width: 150px;
+}
+
+.my-table > * > tr{
+  border: 1px solid #000;
 }

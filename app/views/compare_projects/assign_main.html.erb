@@ -1,19 +1,15 @@
 <div class="link_to_steps">
-  <div class="current_step"><%= link_to "главный проект", compare_project_path(:assign_main), method: :get %></div> 
-  <div><%= link_to "оценивание", compare_project_path(:compare_projects), method: :get %></div>
-  <div><%= link_to "расчет приоритетов", compare_project_path(:set_criteria_priorities), method: :get %></div>
-  <div><%= link_to "результат", compare_project_path(:get_global_ratings), method: :get %></div>
+  <div class="current_step">главный проект</div> 
+  <div>Оценка главных аспектов BOCR</div>
+  <div>Оценка индивидуальных аспектов</div>
+  <div>Оценивание проектов</div>
+  <div>Результат</div>
 </div>
+<%= link_to "Прекратить сравнение", compare_project_path, method: :delete %>
 
-<p>---</p>
-
-
-<%= form_for @compare_projects, url: compare_project_path(:compare_projects), method: :get do |f| %>
-
-<%= f.hidden_field :current_step, value: "compare_projects" %>
+<%= form_for @compare_projects, url: compare_project_path(:compare_bocr), method: :get do |f| %>
 
 <table class="all-projects">
-  
   <tbody>
     <% @compare_projects.projects.each do |project| %>
       <tr>
@@ -26,11 +22,8 @@
       </tr>
     <% end %>
   </tbody>
-  
 </table>
 <br>
 
 <%= f.submit "Далее", class: "btn btn-primary compare-projs"%>
   <% end %>
-
-<p>---</p>
