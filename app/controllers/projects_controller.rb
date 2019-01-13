@@ -38,13 +38,13 @@ class ProjectsController < ApplicationController
     render :not_found_project
   end
 
-  private
+  private 
 
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    def update_params
-      params.require(:project).permit(:name, :user_id)
-    end
+  def update_params
+    params.require(:project).permit(:name, :user_id)
+  end
 end

@@ -4,6 +4,7 @@ class CompareProjectsController < ApplicationController
   steps :assign_main, :compare_bocr, :compare_aspects,  :compare_projects, :get_global_ratings
 
   def show
+    begin
       @compare_projects = CompareProject.new(compare_projects_params)
       session[:last_step] = step
     
@@ -22,6 +23,12 @@ class CompareProjectsController < ApplicationController
       redirect_back(fallback_location: root_path) and return
     else
       render compare_project_path(session[:last_step]), method: :get and return
+    end
+    
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "Для сравнения выберите минимум два проекта."
+      redirect_back(fallback_location: root_path)
+ return
     end
     
   end
@@ -47,7 +54,7 @@ class CompareProjectsController < ApplicationController
   end
 
   private
-
+  
   def check_valid_aspects
     return !@compare_projects.valid_aspects || @compare_projects.project_ids.size <= 1
   end

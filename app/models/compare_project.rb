@@ -12,6 +12,11 @@ class CompareProject#< ApplicationRecord
   
   validates_presence_of :main_project_id, message: "Выберие главный проект!", if: :assign_project
 
+  def save
+    return false unless valid?
+    true
+  end
+
   def current_user
     User.find_by(id: user_id.to_i)
   end
@@ -34,11 +39,6 @@ class CompareProject#< ApplicationRecord
     costs = current_user.projects.find(main_project_id.to_i).costs
     risks = current_user.projects.find(main_project_id.to_i).risks
     Hash[benefit: benefits, opportunity: opportunities, cost: costs, risk: risks]
-  end
-  
-  def save
-    return false unless valid?
-    true
   end
   
   def valid_aspects
