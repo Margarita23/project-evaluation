@@ -1,11 +1,6 @@
 class CompareProjectsController < ApplicationController
   include Wicked::Wizard
 
-  # assign_main -> получение 'главного' проекта
-  # compare_projects -> сравнить проекты относительно главного проекта
-  # set_criteria_priorities -> расчет приоритетов критериев
-  # get_global_ratings -> получить глобальные оценки
-
   steps :assign_main, :compare_bocr, :compare_aspects,  :compare_projects, :get_global_ratings
 
   def show

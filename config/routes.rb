@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   
   get "/reference" => "home#reference", as: :get_reference 
   
-  #, only: [:show, :index, :create, :update, :destroy]
-  
   resources :projects do
     resources :opportunities
     resources :benefits

@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2018_12_31_195612) do
   end
 
   create_table "opportunities", force: :cascade do |t|
-    t.string "name", default: "Новая возможность"
+    t.string "name"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -35,6 +35,6 @@ function getInputForUpdateProjectsName(){
 };
 
 function getOneInputUpdate(index) {
-  $('.link-to-project-show').eq( index ).hide();
-  $('.project-edit-name').eq( index ).css('display', 'inline-block');
+  $('.show_project_name').eq( index ).hide();
+  $('.change_project_name').eq( index ).css('display', 'inline-block');
 };

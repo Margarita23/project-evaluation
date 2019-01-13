@@ -186,6 +186,11 @@ h1 {
   text-align: center;
 }
 
+h1 > * > * {
+  border: none;
+  text-align: center;
+}
+
 table.all-projects {
   border: none;
   margin-left: auto;
@@ -225,6 +230,18 @@ table.all-projects tr:hover{
   justify-content: center;
   width: 146px;
   margin: 0px auto 80px;
+}
+
+.change_project_name {
+  display: none;
+}
+.change_project_name > *::placeholder {
+  color: #00192B;
+  background-color: #CDE3F4;
+}
+
+.change_project_name > * {
+  border: none;
 }
 
 //***********************************

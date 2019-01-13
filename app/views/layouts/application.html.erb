@@ -8,13 +8,12 @@
   </head>
 
   <body>
-    
     <div id="container">
       <div id="logo"><%= link_to cl_image_tag("CompareProjects/compare.png", :width=>80, :crop=>"scale"), root_path %></div>
       <ul class="nav justify-content-end">
         <% unless session[:last_step].nil? %>
           <li class="nav-item compare">
-            <%= link_to "ИДЕТ СРАВНЕНИЕ -- #{session[:last_step]}", compare_projects_path(session[:last_step]), class: "nav-link" %>
+            <%= link_to "ИДЕТ СРАВНЕНИЕ", compare_projects_path(session[:last_step]), class: "nav-link" %>
           </li>
         <% end %>
           <li class="nav-item dropdown">

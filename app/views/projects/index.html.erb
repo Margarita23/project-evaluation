@@ -20,9 +20,6 @@
         <td class="accept-check">
           <%= check_box_tag "[compare_project][project_ids][]", project.id %>
         </td>
-        <td class="edit-project-name-button">
-          <%= cl_image_tag("CompareProjects/Pen-4-icon-2.png", width: 30, crop: "scale") %>
-        </td>
         <td>
           <%= link_to cl_image_tag("CompareProjects/crash.png", width: 30, crop: "scale"), project, method: :delete, data: { confirm: 'Вы уверены?' } %>
         </td>
