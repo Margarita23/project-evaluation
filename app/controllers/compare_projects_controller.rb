@@ -15,11 +15,12 @@ class CompareProjectsController < ApplicationController
       case step
         when :compare_aspects
           @bocr_priorities = SetBocrPrioritiesService.new(@compare_projects).call
+          @compare_projects.bocr_values.update(@bocr_priorities)
         when :compare_projects
           @aspects_priorities = SetAspectsPrioritiesService.new(params[:compare_project][:aspects_priorities]).call
           @compare_projects.aspects_priorities.update(@aspects_priorities)
         when :get_global_ratings
-          @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities).call
+          @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
       end
     if check_valid_aspects
       flash[:alert] = "Выберите минимум два проекта для сравнения с одинаковыми аспектами BOCR"

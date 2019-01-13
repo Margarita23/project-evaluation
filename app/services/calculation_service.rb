@@ -6,7 +6,6 @@ class CalculationService
   
   def call
     set_priorities
-    
   end
   
   def set_priorities

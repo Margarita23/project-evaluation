@@ -21,7 +21,7 @@ class SetBocrPrioritiesService
   private
   
   def set_true_values
-    bocr_val = {"benefits" => "0"}.merge(@compare_projects.bocr_values.clone)
+    bocr_val = {"benefit" => "0"}.merge(@compare_projects.bocr_values.clone)
     bocr_val.each_pair do |key, val|
       if val.to_i >= 0
         bocr_val[key] = val.to_i + 1

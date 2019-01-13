@@ -33,7 +33,7 @@ class CompareProject#< ApplicationRecord
     opportunities = current_user.projects.find(main_project_id.to_i).opportunities
     costs = current_user.projects.find(main_project_id.to_i).costs
     risks = current_user.projects.find(main_project_id.to_i).risks
-    Hash[benefits: benefits, opportunities: opportunities, costs: costs, risks: risks]
+    Hash[benefit: benefits, opportunity: opportunities, cost: costs, risk: risks]
   end
   
   def save
