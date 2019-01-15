@@ -1,14 +1,17 @@
-<div class="link_to_steps">
-  <div>главный проект</div> 
-  <div>Оценка главных аспектов BOCR</div>
-  <div class="current_step">Оценка индивидуальных аспектов</div>
-  <div>Оценивание проектов</div>
-  <div>Результат</div>
-  <div  class="current_step"> ПОЛУЧЕНИЕ ПРИОРИТЕТОВ аспектов</div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Главный проект</li>
+    <li class="breadcrumb-item">Оценка главных аспектов BOCR</li>
+    <li class="breadcrumb-item active" aria-current="page">Оценка индивидуальных аспектов</li>
+    <li class="breadcrumb-item">Оценивание проектов</li>
+    <li class="breadcrumb-item">Результат</li>
+  </ol>
+</nav>
+
+<div class="destroy-compare">
+  <%= link_to "Прекратить сравнение", compare_project_path, method: :delete %>
 </div>
 
-<%= link_to "Прекратить сравнение", compare_project_path, method: :delete %>
-<p>---</p>
 <%= @bocr_priorities %>
 
 <%= form_for @compare_projects, url: compare_project_path(:compare_projects), method: :get, class: "compare-proc" do |f| %>

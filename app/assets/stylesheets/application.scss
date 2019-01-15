@@ -19,30 +19,41 @@
  *= require_tree . 
  */
 
-#container {
+body {
+  background-color: #fff;
+}
+
+#header {
   position: static;
   width: 100%;
   height: 80px;
   background-color: #CDE3F4;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+  margin-bottom: 50px;
 }
 
-#container #logo {
+#header #logo {
   display: inline-block;
 }
 
-#container a {
+#header a {
   color: #00192B;
 }
 
-#container .nav.justify-content-end {
+#header .nav.justify-content-end {
   float: right;
-  width: 500px;
   padding: 20px;
   color: #00192B;
 }
 
-#container li.nav-item.compare > a {
-  color: red;
+#header .destroy-compare {
+  color: #6c757d;
+  display: inline-block;
+}
+
+#header .compare {
+  color: #c67171;
+  display: inline-block;
 }
 
 #footer {
@@ -61,24 +72,24 @@
   marging: 0px;
 }
 
+.back-but {
+  margin: 0px 0px 0px 20px;
+}
+
 .btn-light:first-child {
   font-size: 60px;
-  color: #432700;
-  background-color:#FCC883;
+  color: #1e452c;
+  background-color:#c4e2cd;
+  border: 1px solid #8fc19f;
 }
 
 .btn-light {
-  background-color: #FFEBCF;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  border: none;
+  background-color: #e2c4c4;
   font-size: 40px;
   text-transform: uppercase;
-  color: #705B3F;
+  color: #451e1e;
   margin: 20px;
-}
-
-.btn-light:hover {
-  background-color: #FCEAD1;
+  border: 1px solid #a27373;
 }
 
 .btn-primary{

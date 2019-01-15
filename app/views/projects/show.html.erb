@@ -1,5 +1,4 @@
-<%= link_to 'Изменить', edit_project_path(@project) %> |
-<%= link_to ' < Назад', projects_path, class: "btn btn-secondary" %>
+<div class="back-but"><%= link_to ' < Назад', projects_path, class: "btn btn-secondary" %></div>
 
 <h1>
   <%= render "project_edit", project: @project %>

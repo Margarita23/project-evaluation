@@ -4,33 +4,30 @@ class CompareProjectsController < ApplicationController
   steps :assign_main, :compare_bocr, :compare_aspects,  :compare_projects, :get_global_ratings
 
   def show
-    begin
-      @compare_projects = CompareProject.new(compare_projects_params)
-      session[:last_step] = step
+    if params[:compare_project].present? && params[:compare_project][:project_ids].nil? && step == :assign_main
+      flash[:alert] = "Выберити МИНИМУМ 2 проекта для сравнения."
+      redirect_back(fallback_location: root_path) and return
+    end
     
-      case step
-        when :compare_aspects
-          @bocr_priorities = SetBocrPrioritiesService.new(@compare_projects).call
-          @compare_projects.bocr_values.update(@bocr_priorities)
-        when :compare_projects
-          @aspects_priorities = SetAspectsPrioritiesService.new(params[:compare_project][:aspects_priorities]).call
-          @compare_projects.aspects_priorities.update(@aspects_priorities)
-        when :get_global_ratings
-          @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
-      end
-    if check_valid_aspects
+    @compare_projects = CompareProject.new(compare_projects_params)
+    session[:last_step] = step
+    
+    case step
+      when :compare_aspects
+        @bocr_priorities = SetBocrPrioritiesService.new(@compare_projects).call
+        @compare_projects.bocr_values.update(@bocr_priorities)
+      when :compare_projects
+        @aspects_priorities = SetAspectsPrioritiesService.new(params[:compare_project][:aspects_priorities]).call
+        @compare_projects.aspects_priorities.update(@aspects_priorities)
+      when :get_global_ratings
+        @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
+    end
+    if check_valid_aspects_method
       flash[:alert] = "Выберите минимум два проекта для сравнения с одинаковыми аспектами BOCR"
       redirect_back(fallback_location: root_path) and return
-    else
-      render compare_project_path(session[:last_step]), method: :get and return
     end
-    
-    rescue ActiveRecord::RecordNotFound
-      flash[:alert] = "Для сравнения выберите минимум два проекта."
-      redirect_back(fallback_location: root_path)
- return
-    end
-    
+  
+    render compare_project_path(session[:last_step]), method: :get
   end
 
   def create
@@ -55,8 +52,8 @@ class CompareProjectsController < ApplicationController
 
   private
   
-  def check_valid_aspects
-    return !@compare_projects.valid_aspects || @compare_projects.project_ids.size <= 1
+  def check_valid_aspects_method
+    !@compare_projects.valid_aspects || !@compare_projects.valid_project_id
   end
 
   def compare_projects_params

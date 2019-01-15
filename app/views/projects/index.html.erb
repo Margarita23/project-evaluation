@@ -1,6 +1,6 @@
 <h1>Мои проекты <%= link_to cl_image_tag("CompareProjects/add_project_butt.png", :width=>40, :crop=>"scale"), projects_path, method: :post %></h1>
 
-<%= form_for CompareProject.new, url: compare_project_path(:assign_main), method: :get do |f| %>
+<%= form_for CompareProject.new, url: compare_project_path(id: :assign_main), method: :get do |f| %>
 
 <%= f.hidden_field :user_id, value: current_user.id %>
 
@@ -29,6 +29,6 @@
   
 </table>
 <br>
+  <%= f.submit "Сравнить проекты", class: "btn btn-primary compare-projs"%>
 
-<%= f.submit "Сравнить проекты", class: "btn btn-primary compare-projs"%>
-  <% end %>
+<% end %>

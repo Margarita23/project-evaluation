@@ -8,36 +8,37 @@
   </head>
 
   <body>
-    <div id="container">
+    <div id="header">
       <div id="logo"><%= link_to cl_image_tag("CompareProjects/compare.png", :width=>80, :crop=>"scale"), root_path %></div>
       <ul class="nav justify-content-end">
-        <% unless session[:last_step].nil? %>
-          <li class="nav-item compare">
-            <%= link_to "ИДЕТ СРАВНЕНИЕ", compare_projects_path(session[:last_step]), class: "nav-link" %>
-          </li>
-        <% end %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Мой кабинет</a>
-            <div class="dropdown-menu">
-              <%= link_to "Проекты", projects_path, class: "dropdown-item" %>
-              <a class="dropdown-item" href="#">История сравнений</a>
-              <%= link_to "Настройки", edit_user_registration_path, class: "dropdown-item" %>
-
-              <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
+        <% if session[:last_step].present? %>
           <li class="nav-item">
-            <%= link_to "Справка", get_reference_path, class: "nav-link" %>
+            <%= link_to "Продолжить сравнение", compare_projects_path(session[:last_step]), class: "nav-link compare" %>/<%= link_to "Прекратить сравнение", compare_project_path, method: :delete, class: "nav-link destroy-compare" %>
           </li>
-    </ul>
-    </div>
-    
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+            
+        <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Мой кабинет</a>
+          <div class="dropdown-menu">
+            <%= link_to "Проекты", projects_path, class: "dropdown-item" %>
+            <a class="dropdown-item" href="#">История сравнений</a>
+            <%= link_to "Настройки", edit_user_registration_path, class: "dropdown-item" %>
+
+            <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Справка", get_reference_path, class: "nav-link" %>
+        </li>
+      </ul>
+      
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      </div>
     
     <%= yield %>
     

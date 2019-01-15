@@ -11,7 +11,8 @@ class CompareProject#< ApplicationRecord
     )
   
   validates_presence_of :main_project_id, message: "Выберие главный проект!", if: :assign_project
-
+  #validates_presence_of :project_ids, message: "Для сравнения выберите минимум два проекта.", on: :show
+  
   def save
     return false unless valid?
     true
@@ -43,6 +44,10 @@ class CompareProject#< ApplicationRecord
   
   def valid_aspects
     b_valid_count? && o_valid_count? && c_valid_count? && r_valid_count?
+  end
+  
+  def valid_project_id
+    project_ids.count > 1
   end
   
   private

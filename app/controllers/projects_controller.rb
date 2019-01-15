@@ -2,11 +2,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource
 
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
-
-  def index
-    @projects = Project.all
-  end
-
+  
   def create
     @project = Project.new(name: "Новый проект", user_id: current_user.id)
     if @project.save
