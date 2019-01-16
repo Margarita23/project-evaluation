@@ -13,14 +13,16 @@
       <ul class="nav justify-content-end">
         <% if session[:last_step].present? %>
           <li class="nav-item">
-            <%= link_to "Продолжить сравнение", compare_projects_path(session[:last_step]), class: "nav-link compare" %>/<%= link_to "Прекратить сравнение", compare_project_path, method: :delete, class: "nav-link destroy-compare" %>
-          </li>
-            
+            <%= link_to "Продолжить сравнение", compare_projects_path(id: session[:last_step]), method: :get, class: "nav-link compare" %>
+            <% if params[:id].present? %>
+            /<%= link_to "Прекратить сравнение", compare_project_path, method: :delete, class: "nav-link destroy-compare" %>
+            <% end %>
+          </li>  
         <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Мой кабинет</a>
           <div class="dropdown-menu">
-            <%= link_to "Проекты", projects_path, class: "dropdown-item" %>
+            <%= link_to "Проекты", projects_path, method: :get, class: "dropdown-item" %>
             <a class="dropdown-item" href="#">История сравнений</a>
             <%= link_to "Настройки", edit_user_registration_path, class: "dropdown-item" %>
 
@@ -40,8 +42,12 @@
       <% end %>
       </div>
     
-    <%= yield %>
+    <div class="little-body">
+      <%= yield %>
+    </div>
     
     <div id="footer">Информация об авторе</div>
   </body>
+  
+  
 </html>

@@ -8,14 +8,7 @@
   </ol>
 </nav>
 
-<div class="destroy-compare">
-  <%= link_to "Прекратить сравнение", compare_project_path, method: :delete %>
-</div>
-
-compare_projects.aspects_priorities ---> <%= @compare_projects.aspects_priorities %>
-
-<p>service <%= @aspects_priorities %> </p>
-
+<p><%= @aspects_priorities %></p>
 
 <%= form_for @compare_projects, url: compare_project_path(:get_global_ratings), method: :get, class: "compare-proc" do |f| %>
 
@@ -38,5 +31,5 @@ compare_projects.aspects_priorities ---> <%= @compare_projects.aspects_prioritie
   </tbody>
 </table>
 
-<%= f.submit "Submit" %>
+<%= f.submit "Поставить оценки проектам" %>
 <% end %>

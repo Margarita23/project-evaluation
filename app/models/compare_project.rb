@@ -1,5 +1,5 @@
-class CompareProject#< ApplicationRecord
-  include ActiveModel::Model
+class CompareProject < ApplicationRecord
+  #include ActiveModel::Model
   attr_accessor(
     :project_ids,
     :main_project_id,
@@ -47,7 +47,7 @@ class CompareProject#< ApplicationRecord
   end
   
   def valid_project_id
-    project_ids.count > 1
+    project_ids.present? && project_ids.count > 1
   end
   
   private

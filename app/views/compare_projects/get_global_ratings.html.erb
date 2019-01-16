@@ -8,8 +8,8 @@
   </ol>
 </nav>
 
-<div class="destroy-compare">
-  <%= link_to "Прекратить сравнение", compare_project_path, method: :delete %>
-</div>
+<p><%= @aspects_priorities %></p>
 
+<h1>Результаты</h1>
 <p>Set Project Priorities ---> <%= @projects_priorities_and_global_result %> </p>
+<canvas id="myChart"></canvas>

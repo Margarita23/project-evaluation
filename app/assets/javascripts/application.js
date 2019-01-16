@@ -17,11 +17,16 @@
 //= require jquery_ujs
 //= require turbolinks
 
+//= require chart
+//= require nvd3
+
 
 //= require jquery3
 //= require popper
 //= require bootstrap
 //= require_tree .
+
+
 
 $( document ).ready(function() {
   getInputForUpdateProjectsName();

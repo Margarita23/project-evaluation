@@ -16,7 +16,8 @@
 @import "bootstrap";
 
 /*
- *= require_tree . 
+ *= require_tree .
+ *= require nvd3
  */
 
 body {
@@ -192,6 +193,14 @@ input#project_name.name {
 //***********************************
 //style for all projects
 
+.little-body {
+  width: 90%;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  color: #00192B;
+}
+
 h1 {
   color: #00192B;
   text-align: center;
@@ -203,11 +212,10 @@ h1 > * > * {
 }
 
 table.all-projects {
+  width: 100%;
   border: none;
   margin-left: auto;
   margin-right: auto;
-  color: #00192B;
-  width: 80%;
 }
 
 table.all-projects td {
@@ -480,6 +488,19 @@ table.all-projects tr:hover{
 
 //***********************************
 //***********************************
+//compare-project
+.new_compare_project {
+  //border: 1px solid #00192B;
+  width: 90%;
+  margin: 50px;
+}
+
+.new_compare_project * {
+  
+}
+
+//***********************************
+//***********************************
 //proj-range
 
 .proj-range {
@@ -498,10 +519,6 @@ table.all-projects tr:hover{
 }
 
 //---------------------------
-
-.current_step{
-  color: red;
-}
 
 .my-table {
   width: 85%;

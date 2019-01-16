@@ -69,6 +69,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
+    chart (0.1.5.1)
+      rails
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
@@ -245,6 +247,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 2.0)
   capybara (>= 2.15)
+  chart
   chromedriver-helper
   cloudinary (~> 1.11, >= 1.11.1)
   coffee-rails (~> 4.2)

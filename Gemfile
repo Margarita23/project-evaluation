@@ -43,6 +43,7 @@ gem 'popper_js', '~> 1.14.5'
 gem 'bootsnap', require: false
 gem 'cloudinary', '~> 1.11', '>= 1.11.1'
 gem 'wicked'
+gem 'chart'
 
 
 group :development, :test do
