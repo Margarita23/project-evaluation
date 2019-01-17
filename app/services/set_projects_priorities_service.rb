@@ -8,7 +8,7 @@ class SetProjectsPrioritiesService
   end
   
   def call
-    [bocr_global_values, multi_formula, additive_formula_one]
+    [multi_formula, additive_formula_one]
   end
   
   def multi_formula

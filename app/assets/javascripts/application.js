@@ -17,9 +17,8 @@
 //= require jquery_ujs
 //= require turbolinks
 
-//= require chart
-//= require nvd3
-
+//= require Chart.bundle
+//= require chartkick
 
 //= require jquery3
 //= require popper

@@ -8,8 +8,11 @@
   </ol>
 </nav>
 
-<p><%= @aspects_priorities %></p>
-
 <h1>Результаты</h1>
-<p>Set Project Priorities ---> <%= @projects_priorities_and_global_result %> </p>
-<canvas id="myChart"></canvas>
+<div class="new_compare_project">
+  <%= column_chart @projects_priorities_and_global_result.first %>
+<p>Мультипликативная свертка</p>
+
+<%= column_chart @projects_priorities_and_global_result.second %>
+<p>Аддитивная свертка</p>
+</div>
