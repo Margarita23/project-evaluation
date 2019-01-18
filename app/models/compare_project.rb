@@ -1,5 +1,4 @@
 class CompareProject < ApplicationRecord
-  #include ActiveModel::Model
   attr_accessor(
     :project_ids,
     :main_project_id,
@@ -11,7 +10,6 @@ class CompareProject < ApplicationRecord
     )
   
   validates_presence_of :main_project_id, message: "Выберие главный проект!", if: :assign_project
-  #validates_presence_of :project_ids, message: "Для сравнения выберите минимум два проекта.", on: :show
   
   def save
     return false unless valid?
