@@ -2,6 +2,7 @@
   "name": "project-evaluation",
   "private": true,
   "dependencies": {
-    "jquery-ujs": "^1.2.2"
+    "jquery-ujs": "^1.2.2",
+    "rangeslider.js": "^2.3.2"
   }
 }

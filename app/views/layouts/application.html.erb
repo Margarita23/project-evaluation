@@ -13,7 +13,7 @@
       <ul class="nav justify-content-end">
         <% if session[:last_step].present? %>
           <li class="nav-item">
-            <%= link_to "Продолжить сравнение", compare_projects_path(id: session[:last_step]), method: :get, class: "nav-link compare" %>
+            <%= link_to "Продолжить сравнение", compare_projects_path(id: session[:last_step], compare_project: session[:compare_project]), method: :get, class: "nav-link compare" %>
             <% if params[:id].present? %>
             /<%= link_to "Прекратить сравнение", compare_project_path, method: :delete, class: "nav-link destroy-compare" %>
             <% end %>

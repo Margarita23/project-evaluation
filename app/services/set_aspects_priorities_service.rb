@@ -1,6 +1,11 @@
 class SetAspectsPrioritiesService
   def initialize(aspects_priorities)
-    @aspects_priorities = aspects_priorities.permit!.to_h
+    if aspects_priorities.class.name == "Hash"
+      @aspects_priorities = aspects_priorities
+    else
+      @aspects_priorities = aspects_priorities.permit!.to_h
+    end
+    
   end
   
   def call
@@ -19,7 +24,7 @@ class SetAspectsPrioritiesService
         if(val.to_f >= 0)
           cr[bocr_name][k] = val.to_f + 1
         else
-          cr[bocr_name][k] = 1.0/(-val.to_f)
+          cr[bocr_name][k] = 1.0/-(val.to_f - 1)
         end
       end
     end

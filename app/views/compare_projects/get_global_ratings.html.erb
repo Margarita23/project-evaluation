@@ -1,9 +1,17 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">Главный проект</li>
-    <li class="breadcrumb-item">Оценка главных аспектов BOCR</li>
-    <li class="breadcrumb-item">Оценка индивидуальных аспектов</li>
-    <li class="breadcrumb-item">Оценивание проектов</li>
+    <li class="breadcrumb-item">
+      <%= link_to "Главный проект", compare_projects_path(id: :assign_main, compare_project: session[:compare_project]), method: :get %>
+    </li>
+    <li class="breadcrumb-item">
+      <%= link_to "Оценка главных аспектов BOCR", compare_projects_path(id: :compare_bocr, compare_project: session[:compare_project]), method: :get %>
+    </li>
+    <li class="breadcrumb-item">
+      <%= link_to "Оценка индивидуальных аспектов", compare_projects_path(id: :compare_aspects, compare_project: session[:compare_project]), method: :get %>
+    </li>
+    <li class="breadcrumb-item">
+      <%= link_to "Оценивание проектов", compare_projects_path(id: :compare_projects, compare_project: session[:compare_project]), method: :get %>
+    </li>
     <li class="breadcrumb-item active" aria-current="page">Результат</li>
   </ol>
 </nav>

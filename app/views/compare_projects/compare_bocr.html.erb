@@ -1,6 +1,8 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">Главный проект</li>
+    <li class="breadcrumb-item">
+      <%= link_to "Главный проект", compare_projects_path(id: :assign_main, compare_project: session[:compare_project]), method: :get %>
+    </li>
     <li class="breadcrumb-item active" aria-current="page">Оценка главных аспектов BOCR</li>
     <li class="breadcrumb-item">Оценка индивидуальных аспектов</li>
     <li class="breadcrumb-item">Оценивание проектов</li>
@@ -16,9 +18,25 @@
       <% @compare_projects.aspects.keys[1..@compare_projects.aspects.length].each do |bocr_asp| %>
         <tr>
           <td>
-            <%= @compare_projects.aspects.keys.first.to_s %>
-            <%= f.range_field "[bocr_values][#{bocr_asp.to_s}]", value: "[]", in: -9..8 %>
-            <%= bocr_asp.to_s %>
+            
+            
+            <div class="main_aspect">
+              <p><%= @compare_projects.aspects.keys.first.to_s %></p>
+            </div>
+            <div class="container">
+              
+              <div class="range-slider">
+                <span class="rangeText">1</span>
+                <%= f.range_field "[bocr_values][#{bocr_asp.to_s}]", value: "[]", in: -8..8, class: "rangeInput" %>
+                </div>
+              <div class="box-minmax">
+                <span>1/9</span><span>9</span>
+              </div>
+            </div>
+            <div class="minor_aspect">
+              <p><%= bocr_asp.to_s %></p>
+            </div>
+            
           </td>
         </tr> 
       <% end %>

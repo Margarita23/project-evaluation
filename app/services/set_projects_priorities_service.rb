@@ -101,7 +101,7 @@ class SetProjectsPrioritiesService
           if val.to_f >=0
             empty[pr_id][bocr_name][asp] = val.to_f + 1
           else
-            empty[pr_id][bocr_name][asp] = 1.0/(-val.to_f)
+            empty[pr_id][bocr_name][asp] = 1.0/-(val.to_f - 1)
           end
         end
       end

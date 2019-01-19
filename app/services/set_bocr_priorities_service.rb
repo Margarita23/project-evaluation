@@ -26,7 +26,7 @@ class SetBocrPrioritiesService
       if val.to_i >= 0
         bocr_val[key] = val.to_i + 1
       else val.to_i < 0
-        bocr_val[key] = 1.0/(-val.to_f)
+        bocr_val[key] = 1.0/-(val.to_f - 1)
       end
     end
     bocr_val
