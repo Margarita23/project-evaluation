@@ -19,7 +19,7 @@ class CompareProjectsController < ApplicationController
     #end
     
     @compare_projects = CompareProject.new(compare_projects_params)
-    session[:last_step] = step
+    session[:last_step] = step if can_go_to_next_step
     
     if next_step?(:compare_projects) && not_valid_count_criterias
       redirect_to wizard_path(:compare_projects) and return
@@ -80,9 +80,7 @@ class CompareProjectsController < ApplicationController
       values.to_a.collect do |criteria|
         hash[key][criteria.name] = "0"
       end
-        
     end
-    #params[:compare_project] = {aspects_priorities: hash}
     hash
   end
   
@@ -93,6 +91,11 @@ class CompareProjectsController < ApplicationController
     else
       false
     end
+  end
+  
+  def can_go_to_next_step
+    #future_step?(session[:last_step].to_sym) || @compare_projects.valid?
+    @compare_projects.valid?
   end
 
   private

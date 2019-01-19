@@ -13,6 +13,7 @@
 </nav>
 
 <%= form_for @compare_projects, url: compare_project_path(:compare_projects), method: :get, class: "compare-proc" do |f| %>
+  <%= f.hidden_field :current_step, value: session[:last_step] %>
 
 <table class="my-table">
   <tbody>

@@ -8,7 +8,15 @@
   </ol>
 </nav>
 
+<div class="alert alert-danger">
+  <% if params[:commit] == "Далее" %>
+    <%= @compare_projects.errors.messages[:main_project_id].first if @compare_projects.errors.any? %>
+  <% end %>
+  </div>
+
 <%= form_for @compare_projects, url: compare_project_path(:compare_bocr), method: :get, class: "compare-proc" do |f| %>
+
+  <%= f.hidden_field :current_step, value: session[:last_step] %>
 
 <table class="all-projects">
   <tbody>

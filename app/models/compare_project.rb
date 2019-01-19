@@ -9,7 +9,16 @@ class CompareProject < ApplicationRecord
     :project_values
     )
   
-  validates_presence_of :main_project_id, message: "Выберие главный проект!", if: :assign_project
+  validates_presence_of :main_project_id, message: "Выберите главный проект", if: :on_assign_main
+  validates_presence_of :bocr_values, message: "Поставьте оценки главным аспектам", if: :on_compare_bocr
+  
+  def on_assign_main
+    current_step == 'assign_main'
+  end
+  
+  def on_compare_bocr
+    current_step == 'compare_bocr'
+  end
   
   def save
     return false unless valid?
