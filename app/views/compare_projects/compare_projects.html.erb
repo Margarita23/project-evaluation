@@ -34,7 +34,7 @@
         <% @compare_projects.minor_prj.each do |project| %>
           <td>
             <div class="main_aspect">
-              <p><%= @compare_projects.main_prj.name %></p>
+              <%= @compare_projects.main_prj.name %>
             </div>
             
             <div class="container">
@@ -47,7 +47,7 @@
               </div>
             </div>    
             <div class="minor_aspect">
-              <p><%= f.label "#{project.name}" %></p>
+              <%= f.label "#{project.name}" %>
             </div>       
           </td>
         <% end %>

@@ -32,7 +32,7 @@
               <%= f.hidden_field "[aspects_priorities][#{key}][#{val.name}]", value: "0" %>
             <% else %>
                 <div class="main_aspect">
-                  <p><%= values.first.name %></p>
+                  <%= values.first.name %>
                 </div>
                 <div class="container">
                   <div class="range-slider">
@@ -44,7 +44,7 @@
                   </div>
                 </div>
                 <div class="minor_aspect">
-                  <p><%= val.name %></p>
+                  <%= val.name %>
                 </div>
             <% end %>
           <% end %>
