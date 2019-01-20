@@ -10,6 +10,9 @@
   </ol>
 </nav>
 
+<p><%= @compare_projects.class %></p>
+
+
 <%= form_for @compare_projects, url: compare_project_path(:compare_aspects), method: :get, class: "compare-proc" do |f| %>
   
   <%= f.hidden_field :current_step, value: session[:last_step] %>

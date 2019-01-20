@@ -13,6 +13,8 @@ class CompareProjectsController < ApplicationController
       redirect_back(fallback_location: root_path) and return
     end
     
+    
+    
     #if params[:compare_project].nil?
     #  flash[:alert] = "Что-то произошло не так"
     #  redirect_back(fallback_location: root_path) and return
@@ -22,35 +24,38 @@ class CompareProjectsController < ApplicationController
     session[:last_step] = step if can_go_to_next_step
     
     if next_step?(:compare_projects) && not_valid_count_criterias
-      redirect_to wizard_path(:compare_projects) and return
+    #  redirect_to wizard_path(:compare_projects) and return
+      #redirect_to jump_to(:compare_projects) and return
+      redirect_to compare_project_path(:compare_projects), method: :get and return
     end
     
     case step
-      
       when :compare_aspects
         @bocr_priorities = SetBocrPrioritiesService.new(@compare_projects).call
         @compare_projects.bocr_values.update(@bocr_priorities)
       
       when :compare_projects
         if params[:compare_project].nil?
+          @bocr_priorities = SetBocrPrioritiesService.new(@compare_projects).call
+          @compare_projects.bocr_values.update(@bocr_priorities)
           @aspects_priorities = SetAspectsPrioritiesService.new(hash).call
+          session[:compare_project][:aspects_priorities] =  @aspects_priorities
+          
         else
           @aspects_priorities = SetAspectsPrioritiesService.new(params[:compare_project][:aspects_priorities]).call
-        end  
-        @compare_projects.aspects_priorities.update(@aspects_priorities) 
+          @compare_projects.aspects_priorities.update(@aspects_priorities) 
+        end
       
       when :get_global_ratings
         @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
     end
-    
-   
     
     if check_valid_aspects_method
       flash[:alert] = "Выберите минимум два проекта для сравнения с одинаковыми аспектами BOCR"
       redirect_back(fallback_location: root_path) and return
     end
     
-    render compare_project_path(session[:last_step]), method: :get
+    render compare_project_path(id: session[:last_step]), method: :get
   end
 
   def create
@@ -94,8 +99,7 @@ class CompareProjectsController < ApplicationController
   end
   
   def can_go_to_next_step
-    #future_step?(session[:last_step].to_sym) || @compare_projects.valid?
-    @compare_projects.valid?
+    future_step?(session[:last_step]) || @compare_projects.valid? 
   end
 
   private

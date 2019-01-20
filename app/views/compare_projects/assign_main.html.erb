@@ -8,11 +8,11 @@
   </ol>
 </nav>
 
+<% if params[:commit] == "Далее" %>
 <div class="alert alert-danger">
-  <% if params[:commit] == "Далее" %>
-    <%= @compare_projects.errors.messages[:main_project_id].first if @compare_projects.errors.any? %>
-  <% end %>
-  </div>
+  <%= @compare_projects.errors.messages[:main_project_id].first if @compare_projects.errors.any? %>
+</div>
+<% end %>  
 
 <%= form_for @compare_projects, url: compare_project_path(:compare_bocr), method: :get, class: "compare-proc" do |f| %>
 

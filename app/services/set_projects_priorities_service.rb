@@ -17,10 +17,10 @@ class SetProjectsPrioritiesService
     bocr_global.each_pair do |id, bocr_aspects|
       arr = bocr_aspects.values
       
-      one = arr[0].nil? ? [1, 1] : [arr[0], @bocr_priorities["benefit"]]
-      two = arr[1].nil? ? [1, 1] : [arr[1], @bocr_priorities["opportunity"]]
-      three = arr[2].nil? ? [1, 1] : [arr[2], @bocr_priorities["cost"]]
-      four = arr[3].nil? ? [1, 1] : [arr[3], @bocr_priorities["risk"]]
+      one = arr[0].nil? ? [1, 1] : [arr[0], @bocr_priorities["benefit"].to_f]
+      two = arr[1].nil? ? [1, 1] : [arr[1], @bocr_priorities["opportunity"].to_f]
+      three = arr[2].nil? ? [1, 1] : [arr[2], @bocr_priorities["cost"].to_f]
+      four = arr[3].nil? ? [1, 1] : [arr[3], @bocr_priorities["risk"].to_f]
       
       numerator = (one[0]**one[1]) * (two[0]**two[1])
       denominator = (three[0]**three[1]) * (four[0]**four[1])
@@ -35,13 +35,13 @@ class SetProjectsPrioritiesService
     bocr_global.each_pair do |id, bocr_aspects|
       arr = bocr_aspects.values
       
-      b = arr[0].nil? ? 1 : arr[0]*@bocr_priorities["benefit"]
+      b = arr[0].nil? ? 1 : arr[0]*@bocr_priorities["benefit"].to_f
       
-      o = arr[1].nil? ? 1 : arr[1]*@bocr_priorities["opportunity"]
+      o = arr[1].nil? ? 1 : arr[1]*@bocr_priorities["opportunity"].to_f
       
-      c = arr[2].nil? ? 1 : @bocr_priorities["cost"]/arr[2]
+      c = arr[2].nil? ? 1 : @bocr_priorities["cost"].to_f/arr[2]
       
-      r = arr[3].nil? ? 1 : @bocr_priorities["risk"]/arr[3]
+      r = arr[3].nil? ? 1 : @bocr_priorities["risk"].to_f/arr[3]
       additive_result[id] = b + o + c + r
     end
     additive_result
