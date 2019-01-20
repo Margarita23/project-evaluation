@@ -15,7 +15,10 @@
 </nav>
 
 <div class="grafic">
-  <%= pie_chart @aspects_priorities.values.reduce Hash.new, :merge %>
+  <% @aspects_priorities.each_pair do |name, criterias| %>
+    <%= name %>
+    <%= pie_chart criterias %>
+  <% end %>
 </div>
 
 <%= form_for @compare_projects, url: compare_project_path(:get_global_ratings), method: :get, class: "compare-proc" do |f| %>
