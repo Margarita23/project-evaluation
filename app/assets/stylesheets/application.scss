@@ -194,10 +194,12 @@ input#project_name.name {
 //style for all projects
 
 .little-body {
-  width: 90%;
+  width: 80%;
+  height: 100%;
   border: none;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
   color: #00192B;
 }
 
@@ -489,10 +491,9 @@ table.all-projects tr:hover{
 //***********************************
 //***********************************
 //compare-project
+
 .new_compare_project {
-  //border: 1px solid #00192B;
-  width: 90%;
-  margin: 50px;
+  width: 100%;
 }
 
 //***********************************
@@ -500,36 +501,124 @@ table.all-projects tr:hover{
 //proj-range
 
 .proj-range {
-  width: 90%;
-  margin: 50px;
+  width: 100%;
+  heigth: 100%;
+  margin-bottom: 50px;
 }
 
-.proj-range.th, .proj-range.td {
-  padding: 30px 20px;
-  text-align: center;
-  border: 1px solid #CDE3F4;;
+.proj-range td {
+  heigth: 100%;
+  padding: 10px;
 }
 
-.proj-range.tr:first-child, .proj-range.td:first-child {
-  background-color: #CDE3F4;
+.proj-range .benefit:hover {
+  background-color: rgba(184, 255, 223, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.proj-range .opportunity:hover  {
+  background-color: rgba(255, 237, 184, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.proj-range .cost:hover  {
+  background-color: rgba(184, 186, 255, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.proj-range .risk:hover  {
+  background-color: rgba(255, 204, 184, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
 }
 
 //---------------------------
 
 .my-table {
-  width: 85%;
+  width: 100%;
   height: 100%;
   text-align: center;
-  margin: 50px 100px;
+  border-collapse: separate;
+  border-spacing: 10px;
 }
 
-.my-table > * > tr > td:first-child {
-  background-color: aqua;
-  width: 150px;
+.my-table .benefit > td:first-child {
+  font-size: 20px;
+  background-color: #B8FFDF;
 }
 
-.my-table > * > tr{
-  border: 1px solid #000;
+.my-table .benefit {
+  border-bottom: 1px solid #B8FFDF;
+}
+
+.my-table .benefit:hover {
+  background-color: rgba(184, 255, 223, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out; 
+}
+
+.my-table .opportunity > td:first-child {
+  font-size: 20px;
+  background-color: #FFEDB8;
+}
+
+.my-table .opportunity  {
+  border-bottom: 1px solid #FFEDB8;
+}
+
+.my-table .opportunity:hover  {
+  background-color: rgba(255, 237, 184, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.my-table .cost > td:first-child {
+  font-size: 20px;
+  background-color: #B8BAFF;
+}
+
+.my-table .cost  {
+  border-bottom: 1px solid #B8BAFF;
+}
+
+.my-table .cost:hover  {
+  background-color: rgba(184, 186, 255, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.my-table .risk > td:first-child {
+  font-size: 20px;
+  background-color: #FFCCB8;
+}
+
+.my-table .risk  {
+  border-bottom: 1px solid #FFCCB8;
+}
+
+.my-table .risk:hover  {
+  background-color: rgba(255, 204, 184, 0.5);
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
 }
 
 //************************************
@@ -538,14 +627,6 @@ table.all-projects tr:hover{
 .proj-range tr {
   height: 60px;
 }
-//.proj-range .rangeText {
-//  border: 1px solid red;
-//  border-radius: 10px;
-//  padding: 10px;
-//}
-
-
-
 
 .main_aspect{
   display: inline-flex;
@@ -665,54 +746,3 @@ table.all-projects tr:hover{
     }
     
 }
-
-
-
-
-
-
-
-
-
-/*
-
-input[type='range'] {
-  width: 210px;
-  height: 30px;
-  overflow: hidden;
-  cursor: pointer;
-}
-input[type='range'],
-input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-input[type='range']::-webkit-slider-runnable-track {
-  width: 200px;
-  height: 10px;
-  background: #AAA;
-}
-input[type='range']::-webkit-slider-thumb {
-  position: relative;
-  height: 30px;
-  width: 30px;
-  margin-top: -10px;
-  background: steelblue;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-input[type='range']::-webkit-slider-thumb::before {
-  position: absolute;
-  content: '';
-  height: 10px; // equal to height of runnable track /
-  width: 500px; // make this bigger than the widest range input element /
-  left: -502px; // this should be -2px - width /
-  top: 8px; // don't change this /
-  background: #777;
-}
-
-*/
-
-
-
-

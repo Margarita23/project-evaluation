@@ -10,19 +10,14 @@
   </ol>
 </nav>
 
-<p><%= @compare_projects.class %></p>
-
-
 <%= form_for @compare_projects, url: compare_project_path(:compare_aspects), method: :get, class: "compare-proc" do |f| %>
   
   <%= f.hidden_field :current_step, value: session[:last_step] %>
   <table class="proj-range">
     <tbody>
       <% @compare_projects.aspects.keys[1..@compare_projects.aspects.length].each do |bocr_asp| %>
-        <tr>
-          <td>
-            
-            
+        <tr class="<%= bocr_asp.to_s %>">
+          <td> 
             <div class="main_aspect">
               <p><%= @compare_projects.aspects.keys.first.to_s %></p>
             </div>
@@ -39,7 +34,6 @@
             <div class="minor_aspect">
               <p><%= bocr_asp.to_s %></p>
             </div>
-            
           </td>
         </tr> 
       <% end %>

@@ -29,20 +29,9 @@
 $( document ).ready(function() {
   getInputForUpdateProjectsName();
   
-  
   var ranges = document.getElementsByClassName("rangeInput");
   var lables = document.getElementsByClassName("rangeText");
-  console.log(ranges);
-  console.log(lables);
-  
-  //var i;
-  //for (i = 0; i < ranges.length; i++) {
-  //  var oneOf = ranges[i];
-  //  var oneLab = lables[i];
-  //  updateText(oneOf, oneLab);
-  //}
-  
-  
+
   var i;
   for (i = 0; i < ranges.length; i++) {
     var oneOf = ranges[i];
@@ -50,9 +39,6 @@ $( document ).ready(function() {
     showSliderValue(oneOf, oneLab);
   }
   
-  
-
-
 });
 
 
@@ -79,8 +65,6 @@ function showSliderValue(oneOf, oneLab) {
     };
   oneOf.addEventListener('input',function(){
     var value = rangeValues[$(this).val()]
-    //oneLab.innerHTML = oneOf.value;
-    //var bulletPosition = (oneOf.value /oneOf.max);
     oneLab.innerHTML = value;
     var bulletPosition = (200 + oneOf.value*25);
     console.log(bulletPosition);
@@ -88,43 +72,6 @@ function showSliderValue(oneOf, oneLab) {
   });
 
 }
-
-
-
-function updateText(oneOf, oneLab) {
-  var rangeValues =
-    {
-      "-8": "1/9",
-      "-7": "1/8",
-      "-6": "1/7",
-      "-5": "1/6",
-      "-4": "1/5",
-      "-3": "1/4",
-      "-2": "1/3",
-      "-1": "1/2",
-      "0": "1",
-      "1": "2",
-      "2": "3",
-      "3": "4",
-      "4": "5",
-      "5": "6",
-      "6": "7",
-      "7": "8",
-      "8": "9"
-    };
-  
-  oneOf.addEventListener('click',function(){
-    var value = rangeValues[$(this).val()]
-    oneLab.innerHTML = value;
-    console.log(oneOf.value);
-    console.log(oneLab);
-  });
-  
-};
-
-
-
-
 
 function getInputForUpdateProjectsName(){
   $('.edit-project-name-button').click(function() {

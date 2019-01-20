@@ -26,9 +26,22 @@
         <td><%= asp.name%></td>
         <% @compare_projects.minor_prj.each do |project| %>
           <td>
-            <%= @compare_projects.main_prj.name %>
-            <%= f.range_field "[project_values][#{project.id}][#{val.name.downcase}][#{asp.name}]", value: "[]", in: -9..8, step: 1 %>
-            <%= f.label "#{project.name}" %>
+            <div class="main_aspect">
+              <p><%= @compare_projects.main_prj.name %></p>
+            </div>
+            
+            <div class="container">
+              <div class="range-slider">
+                <span class="rangeText">1</span>
+                <%= f.range_field "[project_values][#{project.id}][#{val.name.downcase}][#{asp.name}]", value: "[]", in: -8..8, step: 1, class: "rangeInput" %>
+              </div>
+              <div class="box-minmax">
+                <span>1/9</span><span>9</span>
+              </div>
+            </div>    
+            <div class="minor_aspect">
+              <p><%= f.label "#{project.name}" %></p>
+            </div>       
           </td>
         <% end %>
       </tr>

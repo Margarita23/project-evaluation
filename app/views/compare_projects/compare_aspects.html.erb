@@ -19,7 +19,7 @@
   <tbody>
     <% @compare_projects.aspects.each_pair do |key, values| %>
       <% if values.count > 1 %>
-      <tr>  
+      <tr class="<%=key%>">  
         <td> <%= key %> </td>
         <td> 
           <% values.each_with_index do |val, index| %>
@@ -27,11 +27,21 @@
             <% if index == 0 %>
               <%= f.hidden_field "[aspects_priorities][#{key}][#{val.name}]", value: "0" %>
             <% else %>
-              <p>
-                <%= values.first.name %>
-                <%= f.range_field "[aspects_priorities][#{key}][#{val.name}]", value: "[]", in: -9..8, step: 1 %>
-                <%= val.name %>
-              </p> 
+                <div class="main_aspect">
+                  <p><%= values.first.name %></p>
+                </div>
+                <div class="container">
+                  <div class="range-slider">
+                    <span class="rangeText">1</span>
+                    <%= f.range_field "[aspects_priorities][#{key}][#{val.name}]", value: "[]", in: -8..8, step: 1, class: "rangeInput" %>
+                  </div>
+                  <div class="box-minmax">
+                    <span>1/9</span><span>9</span>
+                  </div>
+                </div>
+                <div class="minor_aspect">
+                  <p><%= val.name %></p>
+                </div>
             <% end %>
           <% end %>
         </td>
