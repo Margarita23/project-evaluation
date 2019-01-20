@@ -41,10 +41,10 @@ class CompareProject < ApplicationRecord
   end
   
   def aspects
-    benefits = current_user.projects.find(main_project_id.to_i).benefits
-    opportunities = current_user.projects.find(main_project_id.to_i).opportunities
-    costs = current_user.projects.find(main_project_id.to_i).costs
-    risks = current_user.projects.find(main_project_id.to_i).risks
+    benefits = current_user.projects.find(main_project_id.to_i).benefits.order(:name)
+    opportunities = current_user.projects.find(main_project_id.to_i).opportunities.order(:name)
+    costs = current_user.projects.find(main_project_id.to_i).costs.order(:name)
+    risks = current_user.projects.find(main_project_id.to_i).risks.order(:name)
     Hash[benefit: benefits, opportunity: opportunities, cost: costs, risk: risks]
   end
   
@@ -59,22 +59,22 @@ class CompareProject < ApplicationRecord
   private
   
   def b_valid_count?
-    hash = Hash[projects.collect {|p| [p.name, p.benefits.collect{|b| b.name}]}]
+    hash = Hash[projects.collect {|p| [p.name, p.benefits.order(:name).collect{|b| b.name}]}]
     hash.values.uniq.size == 1 
   end
   
   def o_valid_count?
-    hash = Hash[projects.collect {|p| [p.name, p.opportunities.collect{|b| b.name}]}]
+    hash = Hash[projects.collect {|p| [p.name, p.opportunities.order(:name).collect{|b| b.name}]}]
     hash.values.uniq.size == 1 
   end
   
   def c_valid_count?
-    hash = Hash[projects.collect {|p| [p.name, p.costs.collect{|b| b.name}]}]
+    hash = Hash[projects.collect {|p| [p.name, p.costs.order(:name).collect{|b| b.name}]}]
     hash.values.uniq.size == 1 
   end
   
   def r_valid_count?
-    hash = Hash[projects.collect {|p| [p.name, p.risks.collect{|b| b.name}]}]
+    hash = Hash[projects.collect {|p| [p.name, p.risks.order(:name).collect{|b| b.name}]}]
     hash.values.uniq.size == 1 
   end
   

@@ -1,6 +1,7 @@
 class SetProjectsPrioritiesService
   
-  def initialize(projects_values, compare, aspects_priorities, bocr_priorities)
+  def initialize(current_user, projects_values, compare, aspects_priorities, bocr_priorities)
+    @current_user = current_user
     @projects_values = projects_values
     @compare = compare
     @aspects_priorities = aspects_priorities
@@ -13,7 +14,7 @@ class SetProjectsPrioritiesService
   
   def multi_formula
     bocr_global = bocr_global_values
-    multi_result = bocr_global
+    multi_result = {}
     bocr_global.each_pair do |id, bocr_aspects|
       arr = bocr_aspects.values
       
@@ -24,14 +25,15 @@ class SetProjectsPrioritiesService
       
       numerator = (one[0]**one[1]) * (two[0]**two[1])
       denominator = (three[0]**three[1]) * (four[0]**four[1])
-      multi_result[id] = numerator / denominator
+      multi_result[@current_user.projects.find(id).name] = numerator / denominator
     end
+    
     multi_result
   end
   
   def additive_formula_one
     bocr_global = bocr_global_values
-    additive_result = bocr_global
+    additive_result = {}
     bocr_global.each_pair do |id, bocr_aspects|
       arr = bocr_aspects.values
       
@@ -42,7 +44,7 @@ class SetProjectsPrioritiesService
       c = arr[2].nil? ? 1 : @bocr_priorities["cost"].to_f/arr[2]
       
       r = arr[3].nil? ? 1 : @bocr_priorities["risk"].to_f/arr[3]
-      additive_result[id] = b + o + c + r
+      additive_result[@current_user.projects.find(id).name] = b + o + c + r
     end
     additive_result
   end

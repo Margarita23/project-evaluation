@@ -12,20 +12,11 @@ class CompareProjectsController < ApplicationController
       flash[:alert] = "Выберити МИНИМУМ 2 проекта для сравнения."
       redirect_back(fallback_location: root_path) and return
     end
-    
-    
-    
-    #if params[:compare_project].nil?
-    #  flash[:alert] = "Что-то произошло не так"
-    #  redirect_back(fallback_location: root_path) and return
-    #end
-    
+  
     @compare_projects = CompareProject.new(compare_projects_params)
     session[:last_step] = step if can_go_to_next_step
     
     if next_step?(:compare_projects) && not_valid_count_criterias
-    #  redirect_to wizard_path(:compare_projects) and return
-      #redirect_to jump_to(:compare_projects) and return
       redirect_to compare_project_path(:compare_projects), method: :get and return
     end
     
@@ -47,7 +38,7 @@ class CompareProjectsController < ApplicationController
         end
       
       when :get_global_ratings
-        @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
+        @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(current_user, params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
     end
     
     if check_valid_aspects_method
@@ -77,6 +68,8 @@ class CompareProjectsController < ApplicationController
     flash[:alert] = "Сравнение прервано"
     redirect_to root_path
   end
+
+  private
   
   def hash
     hash = {}
@@ -101,8 +94,6 @@ class CompareProjectsController < ApplicationController
   def can_go_to_next_step
     future_step?(session[:last_step]) || @compare_projects.valid? 
   end
-
-  private
   
   def check_valid_aspects_method
     !@compare_projects.valid_aspects || !@compare_projects.valid_project_id
