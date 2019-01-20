@@ -9,7 +9,7 @@ class SetProjectsPrioritiesService
   end
   
   def call
-    [multi_formula, additive_formula_one]
+    [multi_formula, additive_formula_one, set_projects_priorities_to_grafic]
   end
   
   def multi_formula
@@ -49,7 +49,22 @@ class SetProjectsPrioritiesService
     additive_result
   end
   
-  private
+  def set_projects_priorities_to_grafic
+    hash = set_projects_priorities.clone
+    
+    some_hash = hash.values[0].values.reduce Hash.new, :merge
+    some_hash.each_pair do |key, val|
+      some_hash[key] = {}
+    end
+    
+    hash.each_pair do |pr_id, aspects|
+      cr = aspects.values.reduce Hash.new, :merge
+      cr.each_pair do |name, value|
+        some_hash[name][@current_user.projects.find(pr_id).name] = value
+      end
+    end
+    some_hash
+  end
   
   def bocr_global_values
     bocr_global = set_projects_priorities
@@ -80,6 +95,8 @@ class SetProjectsPrioritiesService
     end
     empty_hash
   end
+  
+  private
     
   def get_special_sum
     special_sum = set_main_prj_values.values.first

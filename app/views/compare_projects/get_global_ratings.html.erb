@@ -16,6 +16,13 @@
   </ol>
 </nav>
 
+<div class="grafic">
+  <% @projects_priorities_and_global_result[2].each_pair do |criteria, value| %>
+    <%= criteria %>
+    <%= pie_chart value %>
+  <% end %>
+</div>
+
 <h1>Результаты</h1>
 <div class="new_compare_project">
   <%= column_chart @projects_priorities_and_global_result.first %>
