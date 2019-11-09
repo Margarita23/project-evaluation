@@ -44,7 +44,7 @@ gem 'bootsnap', require: false
 gem 'cloudinary', '~> 1.11', '>= 1.11.1'
 gem 'wicked'
 gem 'chartkick'
-
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 
 group :development, :test do
