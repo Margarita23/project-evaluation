@@ -22,19 +22,16 @@ class CompareProjectsController < ApplicationController
       when :compare_aspects
         @bocr_priorities = SetBocrPrioritiesService.new(@compare_projects).call
         @compare_projects.bocr_values.update(@bocr_priorities)
-      
       when :compare_projects
         if params[:compare_project].nil?
           @bocr_priorities = SetBocrPrioritiesService.new(@compare_projects).call
           @compare_projects.bocr_values.update(@bocr_priorities)
           @aspects_priorities = SetAspectsPrioritiesService.new(hash).call
           session[:compare_project][:aspects_priorities] =  @aspects_priorities
-          
         else
           @aspects_priorities = SetAspectsPrioritiesService.new(params[:compare_project][:aspects_priorities]).call
           @compare_projects.aspects_priorities.update(@aspects_priorities) 
         end
-      
       # when :get_global_ratings
         # @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(current_user, params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
         # render compare_project_path(id: session[:last_step]), method: :post
@@ -44,12 +41,10 @@ class CompareProjectsController < ApplicationController
       flash[:alert] = "Выберите минимум два проекта для сравнения с одинаковыми аспектами BOCR"
       redirect_back(fallback_location: root_path) and return
     end
-    
     render compare_project_path(id: session[:last_step]), method: :get
   end
 
   def resy 
-
     if params[:compare_project].present? && params[:compare_project][:project_ids].nil? && step == :assign_main
       flash[:alert] = "Выберити МИНИМУМ 2 проекта для сравнения."
       redirect_back(fallback_location: root_path) and return
@@ -68,9 +63,8 @@ class CompareProjectsController < ApplicationController
 
     if step == :get_global_ratings
       @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(current_user, params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
+      render compare_project_path(id: session[:last_step]), method: :post
     end
-
-    render compare_project_path(id: session[:last_step]), method: :post
   end
 
   def create
