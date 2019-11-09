@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :costs
     resources :risks
   end
-  
-  resources :compare_projects
-    
+
+  resources :compare_projects, only: [:create, :show, :destroy]
+  post '/compare_projects/:id', controller: :compare_projects, action: :resy
 end

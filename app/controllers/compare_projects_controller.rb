@@ -1,5 +1,4 @@
 class CompareProjectsController < ApplicationController
-  #load_and_authorize_resource
   authorize_resource
   
   include Wicked::Wizard
@@ -7,7 +6,6 @@ class CompareProjectsController < ApplicationController
   steps :assign_main, :compare_bocr, :compare_aspects,  :compare_projects, :get_global_ratings
 
   def show
-
     if params[:compare_project].present? && params[:compare_project][:project_ids].nil? && step == :assign_main
       flash[:alert] = "Выберити МИНИМУМ 2 проекта для сравнения."
       redirect_back(fallback_location: root_path) and return
@@ -37,8 +35,9 @@ class CompareProjectsController < ApplicationController
           @compare_projects.aspects_priorities.update(@aspects_priorities) 
         end
       
-      when :get_global_ratings
-        @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(current_user, params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
+      # when :get_global_ratings
+        # @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(current_user, params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
+        # render compare_project_path(id: session[:last_step]), method: :post
     end
     
     if check_valid_aspects_method
@@ -47,6 +46,31 @@ class CompareProjectsController < ApplicationController
     end
     
     render compare_project_path(id: session[:last_step]), method: :get
+  end
+
+  def resy 
+
+    if params[:compare_project].present? && params[:compare_project][:project_ids].nil? && step == :assign_main
+      flash[:alert] = "Выберити МИНИМУМ 2 проекта для сравнения."
+      redirect_back(fallback_location: root_path) and return
+    end
+  
+    @compare_projects = CompareProject.new(compare_projects_params)
+    session[:last_step] = step if can_go_to_next_step
+    
+    if next_step?(:compare_projects) && not_valid_count_criterias
+      redirect_to compare_project_path(:compare_projects), method: :get and return
+    end
+
+    if step != :get_global_ratings
+      render compare_project_path(id: session[:last_step]), method: :get
+    end
+
+    if step == :get_global_ratings
+      @projects_priorities_and_global_result = SetProjectsPrioritiesService.new(current_user, params[:compare_project][:project_values], @compare_projects, @compare_projects.aspects_priorities, @compare_projects.bocr_values).call
+    end
+
+    render compare_project_path(id: session[:last_step]), method: :post
   end
 
   def create

@@ -21,7 +21,7 @@
   <% end %>
 </div>
 
-<%= form_for @compare_projects, url: compare_project_path(:get_global_ratings), method: :get, class: "compare-proc" do |f| %>
+<%= form_for @compare_projects, url: compare_project_path(:get_global_ratings), method: :post, class: "compare-proc" do |f| %>
   
   <%= f.hidden_field :current_step, value: session[:last_step] %>
 
